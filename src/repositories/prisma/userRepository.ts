@@ -13,7 +13,7 @@ export class PrismaUserRepository implements IUserRepository {
             userName,
             isConfirmed: false,
             tokenConfirmation
-            }
+            },
         })
         return user as UserModel
     }
