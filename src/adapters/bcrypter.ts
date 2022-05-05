@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import { AppError } from '../errors/AppError';
 import { IEncrypter } from "./IEncrypter.1";
 
 export class BcryptAdapter implements IEncrypter {
@@ -11,7 +12,7 @@ export class BcryptAdapter implements IEncrypter {
         try {
             return bcrypt.compare(value, comparator);
         } catch (error) {
-            throw new Error('encrypt error');
+            throw new AppError('encrypt error', 500);
         }
     }
 
@@ -20,7 +21,7 @@ export class BcryptAdapter implements IEncrypter {
             const hash = await bcrypt.hash(value, this.salt);
             return hash;
         } catch (error) {
-            throw new Error('encrypt error');
+            throw new AppError('encrypt error', 500);
         }
     }
 }

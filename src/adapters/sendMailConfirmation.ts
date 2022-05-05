@@ -23,7 +23,7 @@ export class SendEmailConfirmation implements ISendMailConfirmation {
                 ciphers: 'SSLv3',
             },
         });
-        console.log(process.env.MAIL_USER + '-----' + process.env.MAIL_PASS);
+
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 console.log(error);
